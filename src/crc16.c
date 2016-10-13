@@ -2,7 +2,6 @@
 // Created by Eliezio Oliveira on 10/11/16.
 //
 
-#include <stdio.h>
 #include "crc16.h"
 
 #define CCITT_CRC16_SEED    0x1D0F
@@ -54,11 +53,11 @@ uint16_t crc16_update(const uint8_t *data, size_t data_len) {
     for (i = 0; i < data_len; i++) {
         crc = (crc << 8) ^ crc16_table[((crc >> 8) ^ data[i]) & 0xff];
     }
-    return (uint16_t) crc;
+    return crc;
 }
 
 uint16_t crc16_final(void) {
-    return (uint16_t) crc;
+    return crc;
 }
 
 uint16_t crc16_calc(const uint8_t *data, size_t data_len) {
