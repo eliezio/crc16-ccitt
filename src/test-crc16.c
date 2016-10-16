@@ -28,6 +28,7 @@ static struct {
 
 int main(void) {
     int i;
+    int error_count = 0;
 
     memset(multi_a, 'A', sizeof(multi_a));
 
@@ -38,9 +39,10 @@ int main(void) {
             puts("OK");
         } else {
             printf(" WRONG! Expected = %04x\n", cases[i].expected_crc);
+            ++error_count;
         }
     }
 
-    return 0;
+    return error_count;
 }
 
